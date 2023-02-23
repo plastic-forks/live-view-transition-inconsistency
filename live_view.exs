@@ -119,12 +119,20 @@ defmodule SamplePhoenix.SampleLive do
         JS.hide
       </button>
 
-      <button phx-click={JS.add_class("!bg-green-500", @hide_opts)} class="bg-purple-500 w-32 h-32">
-        JS.add_class [to opacity-20]
+      <button phx-click={JS.add_class("border-4", @hide_opts)} class="bg-purple-500 border-black w-32 h-32">
+        JS.add_class
+        <br>
+        ("border-4")
+        <br>
+        [to opacity-20]
       </button>
 
-      <button phx-click={JS.remove_class("!bg-pink-500", @hide_opts)} class="!bg-pink-500 bg-indigo-500 w-32 h-32">
-        JS.remove_class [to opacity-20]
+      <button phx-click={JS.remove_class("border-4", @hide_opts)} class="bg-pink-500 border-4 border-black shadow-lg w-32 h-32">
+        JS.remove_class
+        <br>
+        ("border-4")
+        <br>
+        [to opacity-20]
       </button>
 
       <div class="inline-block">
