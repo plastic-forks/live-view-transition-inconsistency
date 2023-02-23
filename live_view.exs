@@ -20,38 +20,12 @@ defmodule SamplePhoenix.ErrorView do
   def render(template, _), do: Phoenix.Controller.status_message_from_template(template)
 end
 
-# === EXPLANATION OF THIS DEMONSTRAION ===
 #
-# ### Terminology
+# =======================
+#      The LiveView
+# =======================
 #
-# - `JS` refers to the `Phoenix.LiveView.JS` module.
-# - `time` refers the `time` option given to a `JS` function.
-# - `transition_classes`, `start`, and `end` refer to the `{transition_classes, start, end}` tuple given as the `transition` option for a `JS` function.
-#
-# ### Actual behavior
-#
-# When using the `JS` functions `add_class`, `remove_class`, and `transition`, the `end` classes are not applied until `time` has expired. Furthermore, they are never removed from the element.
-#
-# In other words, given a `{transition, start, end}` tuple at the `transition` option:
-#
-# 1. The classes from `start` and `transition` are immediately added.
-# 2. After `time` milliseconds, the `end` classes are added and the `transition` and `start` classes are removed.
-#
-# ### Expected behavior
-#
-# The `JS` functions `add_class`, `remove_class`, and `transition` all apply transitions in a way that is consistent with the `show`, `hide`, and `toggle` functions. Namely:
-#
-# 1. The classes from `start` are added.
-# 2. Immediately, in the next available animation frame, the classes from `transition` are added.
-# 3. Immediately, in the next available animation frame after [2], the classes from `end` are added and the classes from `start` are removed.
-# 4. After `time` milliseconds, the `transition` and `end` classes are removed.
-#
-# This is how the `toggle` function in `phoenix_live_view.js` already works. `JS.show`, `JS.hide`, and `JS.toggle` all use that function behind the scenes, which explains why they behave correctly.
-#
-# https://github.com/phoenixframework/phoenix_live_view/blob/82b349278cc5ced4f0c99fe27d0988b42197d8ce/priv/static/phoenix_live_view.js#L2337-L2350
-
-#
-# The LiveView
+# Visit [URL HERE] for an explanation of the bug that this LiveView demonstrates.
 #
 
 defmodule SamplePhoenix.SampleLive do
