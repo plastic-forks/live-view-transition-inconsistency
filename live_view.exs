@@ -25,7 +25,8 @@ end
 #      The LiveView
 # =======================
 #
-# Visit [URL HERE] for an explanation of the bug that this LiveView demonstrates.
+# Visit https://github.com/phoenixframework/phoenix_live_view/issues/2484 for
+# an explanation of the bug that this LiveView demonstrates.
 #
 
 defmodule SamplePhoenix.SampleLive do
