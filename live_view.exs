@@ -12,8 +12,8 @@ Application.put_env(:sample, SamplePhoenix.Endpoint,
 Mix.install([
   {:plug_cowboy, "~> 2.5"},
   {:jason, "~> 1.0"},
-  {:phoenix, "~> 1.7.0-rc.2", override: true},
-  {:phoenix_live_view, "~> 0.18.15"}
+  {:phoenix, "1.7.2"},
+  {:phoenix_live_view, "0.18.18"}
 ])
 
 defmodule SamplePhoenix.ErrorView do
@@ -36,8 +36,8 @@ defmodule SamplePhoenix.SampleLive do
 
   def render("live.html", assigns) do
     ~H"""
-    <script src="https://cdn.jsdelivr.net/npm/phoenix@1.7.0-rc.2/priv/static/phoenix.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/phoenix_live_view@0.18.2/priv/static/phoenix_live_view.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phoenix@1.7.2/priv/static/phoenix.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phoenix_live_view@0.18.18/priv/static/phoenix_live_view.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       let liveSocket = new window.LiveView.LiveSocket("/live", window.Phoenix.Socket)
@@ -54,14 +54,15 @@ defmodule SamplePhoenix.SampleLive do
     show_transition = {transition, "opacity-20", "opacity-100"}
     hide_transition = {transition, "opacity-100", "opacity-20"}
 
-    socket = assign(
-      socket,
-      time: @time,
-      show_transition: show_transition,
-      hide_transition: hide_transition,
-      show_opts: [transition: show_transition, time: @time],
-      hide_opts: [transition: hide_transition, time: @time]
-    )
+    socket =
+      assign(
+        socket,
+        time: @time,
+        show_transition: show_transition,
+        hide_transition: hide_transition,
+        show_opts: [transition: show_transition, time: @time],
+        hide_opts: [transition: hide_transition, time: @time]
+      )
 
     {:ok, socket}
   end
@@ -182,4 +183,3 @@ end
 
 {:ok, _} = Supervisor.start_link([SamplePhoenix.Endpoint], strategy: :one_for_one)
 Process.sleep(:infinity)
-
